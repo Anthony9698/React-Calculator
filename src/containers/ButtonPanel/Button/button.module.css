@@ -1,0 +1,13 @@
+.Button {
+    align-items: center;
+    font-size: larger;
+    color: white;
+}
+
+.Button.Number {
+    background-color: grey;
+}
+
+.Button.Symbol {
+    background-color: darkred;
+}
