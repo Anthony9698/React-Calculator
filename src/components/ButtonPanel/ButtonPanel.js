@@ -30,9 +30,9 @@ const buttonPanel = props => {
                 <Button btnType="Symbol">+</Button>
             </div>
             <div className={styles.Row}>
-                <Button btnType="Number" style={{'flex-grow': '2', 'width': '100px'}}>0</Button>
-                <Button btnType="Number" style={{'flex-grow': '1'}}>.</Button>
-                <Button btnType="Symbol" style={{'flex-grow': '1'}}>=</Button>
+                <Button btnType="Number" style={{'flex-grow': '2'}}>0</Button>
+                <Button btnType="Number">.</Button>
+                <Button btnType="Symbol">=</Button>
             </div>
         </div>
     );

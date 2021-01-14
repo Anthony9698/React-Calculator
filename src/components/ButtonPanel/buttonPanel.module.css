@@ -1,5 +1,10 @@
+.ButtonPanel { 
+    height: 85vh;
+}
+
 .Row {
     display: flex;
     align-items: center;
     justify-content: center;
+    height: 20%;
 }
