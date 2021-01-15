@@ -3,7 +3,32 @@
     background-color: #122831;
     color: #FAF6EE;
     justify-content: flex-end;
-    font-size: 6rem;
+    align-items: center;
+    font-size: 5.5rem;
     padding-right: 2rem;
     height: 15vh;
+}
+
+@media (min-width: 576px) and (max-width: 767px) {
+    .Display {
+        font-size: 6rem;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991px) { 
+    .Display {
+        font-size: 6.5rem;
+    }    
+}
+
+@media (min-width: 992px) and (max-width: 1199px) { 
+    .Display {
+        font-size: 7.5rem;
+    }
+}
+
+@media (min-width: 1200px) {
+    .Display {
+        font-size: 8rem;
+    }
 }
