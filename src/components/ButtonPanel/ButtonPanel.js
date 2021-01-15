@@ -6,7 +6,7 @@ const buttonPanel = props => {
     return (
         <div className={styles.ButtonPanel}>
             <div className={styles.Row}>
-                <Button btnType="Number">AC</Button>
+                <Button btnType="Clear">AC</Button>
                 <Button btnType="Number">+/-</Button>
                 <Button btnType="Number">%</Button>
                 <Button btnType="Symbol">÷</Button>

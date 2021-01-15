@@ -1,7 +1,7 @@
 .Display {
     display: flex;
-    background-color: darkgray;
-    color: white;
+    background-color: #122831;
+    color: #FAF6EE;
     justify-content: flex-end;
     font-size: 6rem;
     padding-right: 2rem;

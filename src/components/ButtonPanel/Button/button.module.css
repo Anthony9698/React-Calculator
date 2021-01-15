@@ -1,16 +1,22 @@
 .Button {
     text-align: center;
-    font-size: larger;
-    color: white;
+    font-size: 4rem;
+    color: #3F443C;
     border: 0.5px solid black;
     height: 100%;
     width: 25%;
 }
 
 .Number {
-    background-color: #555555;
+    background-color: #FAF6EE;
 }
 
 .Symbol {
-    background-color: darkred;
+    background-color: #58756E;
+    color: #FAF6EE;
+}
+
+.Clear {
+    background-color: #EA4113;
+    color:#FAF6EE;
 }
