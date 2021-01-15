@@ -1,6 +1,6 @@
 .Button {
     text-align: center;
-    font-size: 4rem;
+    font-size: 3rem;
     color: #3F443C;
     border: 0.5px solid black;
     height: 100%;
@@ -19,4 +19,28 @@
 .Clear {
     background-color: #EA4113;
     color:#FAF6EE;
+}
+
+@media (min-width: 576px) and (max-width: 767px) {
+    .Button {
+        font-size: 3.5rem;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+    .Button {
+        font-size: 4rem;
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+    .Button {
+        font-size: 4.5rem;
+    }
+}
+
+@media (min-width: 1200px) {
+    .Button {
+        font-size: 5rem;
+    }
 }
