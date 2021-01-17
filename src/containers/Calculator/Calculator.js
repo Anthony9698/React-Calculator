@@ -7,7 +7,7 @@ class Calculator extends Component {
         calcVal: 0 
     }
 
-    numPressHandler = event => {
+    numClickedHandler = event => {
         let currVal = this.state.calcVal.toString();
         if (currVal === '0') {
             currVal = event.target.value;
@@ -17,11 +17,17 @@ class Calculator extends Component {
         this.setState({calcVal: currVal});
     }
 
+    clearHandler = () => {
+        this.setState({calcVal: 0});
+    }
+
     render() {
         return (
             <div>
                 <Display value={this.state.calcVal} />
-                <ButtonPanel numClicked={this.numPressHandler} />
+                <ButtonPanel 
+                    numClicked={this.numClickedHandler}
+                    clear={this.clearHandler} />
             </div>
         );
     }
