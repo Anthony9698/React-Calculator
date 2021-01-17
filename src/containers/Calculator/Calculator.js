@@ -3,11 +3,25 @@ import ButtonPanel from '../../components/ButtonPanel/ButtonPanel';
 import Display from '../../components/Display/Display';
 
 class Calculator extends Component {
+    state = {
+        calcVal: 0 
+    }
+
+    numPressHandler = event => {
+        let currVal = this.state.calcVal.toString();
+        if (currVal === '0') {
+            currVal = event.target.value;
+        } else {
+            currVal += event.target.value;
+        }
+        this.setState({calcVal: currVal});
+    }
+
     render() {
         return (
             <div>
-                <Display />
-                <ButtonPanel />
+                <Display value={this.state.calcVal} />
+                <ButtonPanel numClicked={this.numPressHandler} />
             </div>
         );
     }
