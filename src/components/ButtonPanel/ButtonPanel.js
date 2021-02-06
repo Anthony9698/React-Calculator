@@ -85,7 +85,7 @@ const buttonPanel = props => {
         {
             name: "+",
             type: "Symbol",
-            clicked: props.multiplied
+            clicked: props.addition
         },
         {
             name: "0",
