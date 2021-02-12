@@ -6,7 +6,7 @@ const buttonPanel = props => {
     return (
         <div className={styles.ButtonPanel}>
             <div className={styles.Row}>
-                <Button btnType={"Clear"} clicked={props.clear}>AC</Button>
+                <Button btnType={"Clear"} clicked={props.clear}>{props.clearText}</Button>
                 <Button btnType={"Number"}>+/-</Button>
                 <Button btnType={"Number"}>%</Button>
                 <Button btnType={"Symbol"} clicked={props.divide}>÷</Button>

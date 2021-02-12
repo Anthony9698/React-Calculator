@@ -81,7 +81,8 @@ class Calculator extends Component {
         return (
             <div>
                 <Display value={this.state.displayVal === null ? '0' : this.state.displayVal} />
-                <ButtonPanel 
+                <ButtonPanel
+                    clearText={this.state.displayVal === null ? 'AC' : 'C'} 
                     numClicked={this.numClickedHandler}
                     add={this.addHandler}
                     subtract={this.subHandler}
