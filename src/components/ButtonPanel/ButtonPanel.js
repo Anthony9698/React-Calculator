@@ -65,7 +65,7 @@ const buttonPanel = props => {
         {
             name: "-",
             type: "Symbol",
-            clicked: props.multiplied
+            clicked: props.subtraction
         },
         {
             name: "1",
