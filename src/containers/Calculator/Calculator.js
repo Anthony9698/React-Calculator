@@ -83,8 +83,8 @@ class Calculator extends Component {
                 <Display value={this.state.displayVal === null ? '0' : this.state.displayVal} />
                 <ButtonPanel 
                     numClicked={this.numClickedHandler}
-                    addition={this.addHandler}
-                    subtraction={this.subHandler}
+                    add={this.addHandler}
+                    subtract={this.subHandler}
                     clear={this.clearHandler} />
             </div>
         );
