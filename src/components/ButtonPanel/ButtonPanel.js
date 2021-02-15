@@ -32,7 +32,7 @@ const buttonPanel = props => {
             <div className={styles.Row}>
                 <Button btnType={"Number"} style={{'flexGrow': 2}} clicked={props.numClicked}>0</Button>
                 <Button btnType={"Number"}>.</Button>
-                <Button btnType={"Symbol"} clicked={props.equal}>=</Button>
+                <Button btnType={"Symbol"} clicked={props.equals}>=</Button>
             </div>
         </div>
     );

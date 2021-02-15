@@ -27,11 +27,7 @@ class Calculator extends Component {
 
         if (currVal) {
             if (newEquation.length === 2) {
-                let operand1 = parseInt(newEquation[0]);
-                let operand2 = parseInt(currVal);
-                let op = newEquation[1];
-                let calculation = this.operations[op](operand1, operand2);
-                if (calculation === Infinity) { calculation = 0; }
+                let calculation = this.equalsHandler();
                 newEquation[0] = calculation;
                 newEquation[1] = operator;
                 this.setState({ equation: newEquation, displayVal: calculation, currVal: null });
@@ -60,10 +56,21 @@ class Calculator extends Component {
     subHandler = () => this.operationHelper('-');
     multHandler = () => this.operationHelper('x');
     divHandler = () => this.operationHelper('÷');
-
-    clearHandler = () => {
-        this.setState({ displayVal: null, equation: [], equationIndex: 0 });
+    equalsHandler = () => {
+        let newEquation = [...this.state.equation];
+        let currVal = this.state.currVal;
+        if (currVal && newEquation.length === 2) {
+            let operand1 = parseInt(newEquation[0]);
+            let operand2 = parseInt(currVal);
+            let op = newEquation[1];
+            let calculation = this.operations[op](operand1, operand2);
+            if (calculation === Infinity) { calculation = 0; }
+            this.setState({currVal: calculation, displayVal: calculation, equation: []});
+            return calculation;
+        }
     }
+
+    clearHandler = () => { this.setState({ displayVal: null, equation: [], equationIndex: 0 }); }
 
     render() {
         return (
@@ -76,6 +83,7 @@ class Calculator extends Component {
                     subtract={this.subHandler}
                     multiply={this.multHandler}
                     divide={this.divHandler}
+                    equals={this.equalsHandler}
                     clear={this.clearHandler} />
             </div>
         );
