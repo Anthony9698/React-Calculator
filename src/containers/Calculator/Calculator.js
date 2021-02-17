@@ -13,7 +13,7 @@ class Calculator extends Component {
     operations = {
         '+': (x, y) => x + y,
         '-': (x, y) => x - y,
-        '÷': (x, y) => x / y,
+        '÷': (x, y) => (x/y),
         'x': (x, y) => x * y
     }
 
@@ -27,7 +27,11 @@ class Calculator extends Component {
 
         if (currVal) {
             if (newEquation.length === 2) {
-                let calculation = this.equalsHandler();
+                let operand1 = parseInt(newEquation[0]);
+                let operand2 = parseInt(currVal);
+                let op = newEquation[1];
+                let calculation = this.operations[op](operand1, operand2);
+                if (calculation === Infinity) { calculation = 0; }
                 newEquation[0] = calculation;
                 newEquation[1] = operator;
                 this.setState({ equation: newEquation, displayVal: calculation, currVal: null });
@@ -43,6 +47,7 @@ class Calculator extends Component {
             newEquation[newEquation.length - 1] = operator;
             this.setState({ equation: newEquation });
         }
+        console.log(this.state.equation);
     }
 
     numClickedHandler = event => {
@@ -50,6 +55,7 @@ class Calculator extends Component {
         if (currVal === null) { currVal = event.target.value; }
         else if (currVal !== 0) { currVal += event.target.value; }
         this.setState({ currVal: currVal, displayVal: currVal });
+        console.log(this.state.equation);
     }
 
     addHandler = () => this.operationHelper('+');
@@ -66,7 +72,6 @@ class Calculator extends Component {
             let calculation = this.operations[op](operand1, operand2);
             if (calculation === Infinity) { calculation = 0; }
             this.setState({currVal: calculation, displayVal: calculation, equation: []});
-            return calculation;
         }
     }
 
