@@ -59,9 +59,17 @@ class Calculator extends Component {
 
     numClickedHandler = event => {
         let currVal = this.state.currVal;
-        if (currVal === null) { currVal = event.target.value; }
-        else if (currVal !== 0) { currVal += event.target.value; }
-        this.setState({ currVal: currVal, displayVal: currVal });
+        let displayVal = this.state.displayVal;
+        if (displayVal === null && event.target.value === '0') {
+            return;
+        } 
+        else if (currVal === null) {
+            currVal = event.target.value;
+        }
+        else {
+            currVal += event.target.value;
+        }
+        this.setState({ currVal: currVal, displayVal: currVal});
     }
 
     addHandler = () => this.operationHelper('+');
