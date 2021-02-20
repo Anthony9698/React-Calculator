@@ -97,7 +97,13 @@ class Calculator extends Component {
     }
     percentHandler = () => {
         let currVal = this.state.currVal;
-        if (currVal) { currVal/= 100 }
+        if (currVal) {
+            currVal /= 100; 
+            let decPortion = (currVal + "").split(".")[1];
+            if (decPortion && decPortion.length > 9) {
+                currVal = currVal.toFixed(9);
+            }
+        }
         this.setState({ displayVal: currVal, currVal: currVal });
     }
 
