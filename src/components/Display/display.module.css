@@ -8,13 +8,11 @@
     padding-right: 1.5rem;
     padding-left: 1.5rem;
     height: 15vh;
-    border: yellow 4px solid;
 }
 
 .Display div {
     width: 100%;
     text-align: right;
-    border: 3px solid green;
 }
 
 @media (max-width: 575px) {

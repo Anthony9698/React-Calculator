@@ -6,7 +6,6 @@ class Calculator extends Component {
     state = {
         currVal: null,
         displayVal: null,
-        equationIndex: 0,
         equation: []
     }
 
@@ -21,17 +20,26 @@ class Calculator extends Component {
         return symbol === '+' || symbol === '-' || symbol === '÷' || symbol === 'x';
     }
 
+    calculateNumber = (operand1, operand2, operator) => {
+        let calculation = this.operations[operator](Number(operand1), Number(operand2));
+
+        if (calculation === Infinity) {
+            return 0;
+        }
+        else if (calculation % 1 !== 0) {
+            return calculation.toPrecision(9);
+        }
+        return calculation;
+        
+    }
+
     operationHelper = operator => {
         let newEquation = [...this.state.equation];
         let currVal = this.state.currVal;
 
         if (currVal) {
             if (newEquation.length === 2) {
-                let operand1 = parseInt(newEquation[0]);
-                let operand2 = parseInt(currVal);
-                let op = newEquation[1];
-                let calculation = this.operations[op](operand1, operand2);
-                if (calculation === Infinity) { calculation = 0; }
+                let calculation = this.calculateNumber(newEquation[0], currVal, operator);
                 newEquation[0] = calculation;
                 newEquation[1] = operator;
                 this.setState({ equation: newEquation, displayVal: calculation, currVal: null });
@@ -47,7 +55,6 @@ class Calculator extends Component {
             newEquation[newEquation.length - 1] = operator;
             this.setState({ equation: newEquation });
         }
-        console.log(this.state.equation);
     }
 
     numClickedHandler = event => {
@@ -55,7 +62,6 @@ class Calculator extends Component {
         if (currVal === null) { currVal = event.target.value; }
         else if (currVal !== 0) { currVal += event.target.value; }
         this.setState({ currVal: currVal, displayVal: currVal });
-        console.log(this.state.equation);
     }
 
     addHandler = () => this.operationHelper('+');
@@ -66,16 +72,12 @@ class Calculator extends Component {
         let newEquation = [...this.state.equation];
         let currVal = this.state.currVal;
         if (currVal && newEquation.length === 2) {
-            let operand1 = parseInt(newEquation[0]);
-            let operand2 = parseInt(currVal);
-            let op = newEquation[1];
-            let calculation = this.operations[op](operand1, operand2);
-            if (calculation === Infinity) { calculation = 0; }
+            let calculation = this.calculateNumber(newEquation[0], currVal, newEquation[1]);
             this.setState({currVal: calculation, displayVal: calculation, equation: []});
         }
     }
 
-    clearHandler = () => { this.setState({ displayVal: null, equation: [], equationIndex: 0 }); }
+    clearHandler = () => { this.setState({ displayVal: null, currVal: null, equation: []}); }
 
     render() {
         return (
