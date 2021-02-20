@@ -31,7 +31,6 @@ class Calculator extends Component {
             return calculation.toPrecision(9);
         }
         return calculation;
-        
     }
 
     operationHelper = operator => {
@@ -92,6 +91,11 @@ class Calculator extends Component {
         if (!currVal.includes('.')) { parseFloat(currVal += '.'); }
         this.setState({ displayVal: currVal, currVal: currVal });
     }
+    negPosHandler = () => {
+        let currVal = this.state.currVal;
+        if (currVal) {currVal *= -1; }
+        this.setState({ displayVal: currVal, currVal: currVal });
+    }
 
     render() {
         return (
@@ -106,6 +110,7 @@ class Calculator extends Component {
                     divide={this.divHandler}
                     equals={this.equalsHandler}
                     decimal={this.decimalHandler}
+                    negPos={this.negPosHandler}
                     clear={this.clearHandler} />
             </div>
         );
