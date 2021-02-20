@@ -22,11 +22,12 @@ class Calculator extends Component {
 
     calculateNumber = (operand1, operand2, operator) => {
         let calculation = this.operations[operator](Number(operand1), Number(operand2));
+        let decPortionCalc = (calculation+"").split(".")[1];
 
         if (calculation === Infinity) {
             return 0;
         }
-        else if (calculation % 1 !== 0) {
+        else if (decPortionCalc && decPortionCalc.length > 9) {
             return calculation.toPrecision(9);
         }
         return calculation;
@@ -84,8 +85,13 @@ class Calculator extends Component {
             this.setState({currVal: calculation, displayVal: calculation, equation: []});
         }
     }
-
     clearHandler = () => { this.setState({ displayVal: null, currVal: null, equation: []}); }
+    decimalHandler = () => { 
+        let currVal = this.state.currVal;
+        if (!currVal) { currVal = '0'; }
+        if (!currVal.includes('.')) { parseFloat(currVal += '.'); }
+        this.setState({ displayVal: currVal, currVal: currVal });
+    }
 
     render() {
         return (
@@ -99,6 +105,7 @@ class Calculator extends Component {
                     multiply={this.multHandler}
                     divide={this.divHandler}
                     equals={this.equalsHandler}
+                    decimal={this.decimalHandler}
                     clear={this.clearHandler} />
             </div>
         );
