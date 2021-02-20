@@ -8,7 +8,7 @@ const buttonPanel = props => {
             <div className={styles.Row}>
                 <Button btnType={"Clear"} clicked={props.clear}>{props.clearText}</Button>
                 <Button btnType={"Number"} clicked={props.negPos}>+/-</Button>
-                <Button btnType={"Number"}>%</Button>
+                <Button btnType={"Number"} clicked={props.percent}>%</Button>
                 <Button btnType={"Symbol"} clicked={props.divide}>÷</Button>
             </div>
             <div className={styles.Row}>

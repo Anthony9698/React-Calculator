@@ -12,7 +12,7 @@ class Calculator extends Component {
     operations = {
         '+': (x, y) => x + y,
         '-': (x, y) => x - y,
-        '÷': (x, y) => (x/y),
+        '÷': (x, y) => (x / y),
         'x': (x, y) => x * y
     }
 
@@ -22,7 +22,7 @@ class Calculator extends Component {
 
     calculateNumber = (operand1, operand2, operator) => {
         let calculation = this.operations[operator](Number(operand1), Number(operand2));
-        let decPortionCalc = (calculation+"").split(".")[1];
+        let decPortionCalc = (calculation + "").split(".")[1];
 
         if (calculation === Infinity) {
             return 0;
@@ -62,14 +62,14 @@ class Calculator extends Component {
         let displayVal = this.state.displayVal;
         if (displayVal === null && event.target.value === '0') {
             return;
-        } 
+        }
         else if (currVal === null) {
             currVal = event.target.value;
         }
         else {
             currVal += event.target.value;
         }
-        this.setState({ currVal: currVal, displayVal: currVal});
+        this.setState({ currVal: currVal, displayVal: currVal });
     }
 
     addHandler = () => this.operationHelper('+');
@@ -81,11 +81,11 @@ class Calculator extends Component {
         let currVal = this.state.currVal;
         if (currVal && newEquation.length === 2) {
             let calculation = this.calculateNumber(newEquation[0], currVal, newEquation[1]);
-            this.setState({currVal: calculation, displayVal: calculation, equation: []});
+            this.setState({ currVal: calculation, displayVal: calculation, equation: [] });
         }
     }
-    clearHandler = () => { this.setState({ displayVal: null, currVal: null, equation: []}); }
-    decimalHandler = () => { 
+    clearHandler = () => { this.setState({ displayVal: null, currVal: null, equation: [] }); }
+    decimalHandler = () => {
         let currVal = this.state.currVal;
         if (!currVal) { currVal = '0'; }
         if (!currVal.includes('.')) { parseFloat(currVal += '.'); }
@@ -93,7 +93,12 @@ class Calculator extends Component {
     }
     negPosHandler = () => {
         let currVal = this.state.currVal;
-        if (currVal) {currVal *= -1; }
+        if (currVal) { currVal *= -1; }
+        this.setState({ displayVal: currVal, currVal: currVal });
+    }
+    percentHandler = () => {
+        let currVal = this.state.currVal;
+        if (currVal) { currVal/= 100 }
         this.setState({ displayVal: currVal, currVal: currVal });
     }
 
@@ -111,6 +116,7 @@ class Calculator extends Component {
                     equals={this.equalsHandler}
                     decimal={this.decimalHandler}
                     negPos={this.negPosHandler}
+                    percent={this.percentHandler}
                     clear={this.clearHandler} />
             </div>
         );
