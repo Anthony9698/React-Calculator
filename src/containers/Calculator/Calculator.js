@@ -36,7 +36,6 @@ class Calculator extends Component {
     operationHelper = operator => {
         let newEquation = [...this.state.equation];
         let currVal = this.state.currVal;
-
         if (currVal) {
             if (newEquation.length === 2) {
                 let calculation = this.calculateNumber(newEquation[0], currVal, operator);
