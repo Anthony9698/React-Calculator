@@ -6,7 +6,7 @@ Calculator created using the React JS library.
 https://anthony9698.github.io/React-Calculator/
 
 # Install Dependencies
-npm install
+#### `npm install`
 
 # Start app
-#### npm start
+#### `npm start`
