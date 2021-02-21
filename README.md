@@ -9,4 +9,4 @@ https://anthony9698.github.io/React-Calculator/
 npm install
 
 # Start app
-## `npm start`
+#### `npm start`
