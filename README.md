@@ -1,3 +1,12 @@
-# React Calculator
+# Calculator
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Calculator created using the React JS library.
+
+# Demo
+https://anthony9698.github.io/React-Calculator/
+
+# Install Dependencies
+npm install
+
+# Start app
+npm start
